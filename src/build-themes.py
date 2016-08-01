@@ -2,9 +2,9 @@
 
 import os
 
-VARIATIONS = ["Mint-Y",
-              "Mint-Y-Darker",
-              "Mint-Y-Dark"]
+VARIATIONS = ["Mint-Y-Blue",
+              "Mint-Y-Blue-Darker",
+              "Mint-Y-Blue-Dark"]
 
 DEST = '../usr/share/themes'
 
@@ -37,8 +37,8 @@ if __name__ == '__main__':
     print("Building themes")
     for variation in VARIATIONS:
         dest_folder = os.path.join(DEST, variation)
-        if variation == "Mint-Y":
-            print("    Building Mint-Y")
+        if variation == "Mint-Y-Blue":
+            print("    Building Mint-Y-Blue")
             os.system("cp index.theme %s" % dest_folder)
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
@@ -61,8 +61,8 @@ if __name__ == '__main__':
             os.system("cp cinnamon/mint-y-thumbnail.png %s" % os.path.join(version_folder, "thumbnail.png"))
             os.system("cp cinnamon/cinnamon.css %s" % version_folder)
 
-        elif variation == "Mint-Y-Darker":
-            print("    Building Mint-Y-Darker")
+        elif variation == "Mint-Y-Blue-Darker":
+            print("    Building Mint-Y-Blue-Darker")
             os.system("cp index.theme-darker %s" % os.path.join(dest_folder, "index.theme"))
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
@@ -77,8 +77,8 @@ if __name__ == '__main__':
             os.system("cp gtk-3.0/3.18/gtk-dark.css %s" % version_folder)
             os.system("cp gtk-3.0/3.18/thumbnail.png %s" % version_folder)
 
-        elif variation == "Mint-Y-Dark":
-            print("    Building Mint-Y-Dark")
+        elif variation == "Mint-Y-Blue-Dark":
+            print("    Building Mint-Y-Blue-Dark")
             os.system("cp index.theme-dark %s" % os.path.join(dest_folder, "index.theme"))
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
