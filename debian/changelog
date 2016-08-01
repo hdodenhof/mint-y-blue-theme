@@ -1,0 +1,106 @@
+mint-y-theme (1.0.7) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * cinnamon: Remove the use of the Futura font
+  * cinnamon: Make a few tweaks to the calendar applet
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 21 Jun 2016 17:45:02 +0100
+
+mint-y-theme (1.0.6) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * gtk3: Use the the red warning color for error type infobars
+  * metacity-3: Add better support for Cinnamon tiling features
+  * nemo-sidebar: Restyle the scrollbar in the nemo sidebar
+  * gtk3: Add a couple more selectors for primary-toolbars
+  * xreader: Restyle the toolbar zoom combobox
+  * scale sliders: Remove the :hover effect from GtkScale sliders
+  * gtk3: Workaround an issue with the dark theme in synapic
+  * gnome-panel: Improve the styling a bit so you can at least read some of the panel items
+  * dark-themes: Adjust foreground text colors
+  * cinnamon: Add and properly name the missing corner-ripple.svg
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 20 Jun 2016 12:21:30 +0100
+
+mint-y-theme (1.0.5) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * cinnamon: Add thumbnails for the Cinnamon themes
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 06 Jun 2016 11:49:34 +0100
+
+mint-y-theme (1.0.4) sarah; urgency=medium
+
+  * Fixed Mint-Y-Darker definition (uses Mint-Y-Dark metacity theme)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 04 Jun 2016 18:40:42 +0100
+
+mint-y-theme (1.0.3) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * suggested-action: Use a green shade instead of blue for suggested action buttons
+
+  [ Michael Webster ]
+  * Update build-deps with ruby-sass, optipng
+
+  [ JosephMcc ]
+  * Forgot to git add a couple of image files for pane separators
+  * metacity: Add thicker borders to the metacity-2 theme
+  * gtk2: Fix the color of the panel background
+  * metacity-2: Ensure there is no titlebar on border type windows
+  * dialogs: Add a border around dialog buttons
+  * menus: Darken hovered menu items a bit
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 21 May 2016 15:27:20 +0100
+
+mint-y-theme (1.0.2) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * Recolor the tooltips in all theme variations
+  * gtk3: Clean up linked button borders Fix several small issues. Also quit using the selected_bg_color for active buttons since it gives the visual appearance of the active button being larger than its neighbors.
+  * light-gtk-theme: Darken the foreground elements of header widgets a bit This includes toolbar, header bars, and menu bars
+  * Fix an error in the previous commit that left active linked buttons with the wrong border color
+  * build-themes.py: Make sure we update all the needed assets when generating the themes. Not just the gtk3 assets
+  * cinnamon: Make some general improvements to the cinnamon themes
+  * Cinnamon: Use the same theming for panel launchers regardless of whether they are located on the top or bottom panel.
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue, 10 May 2016 16:45:33 +0100
+
+mint-y-theme (1.0.1) sarah; urgency=medium
+
+  [ JosephMcc ]
+  * Actually add the .gitignore
+  * Fix the text color in some primary toolbar and header bar entries
+  * sidebars: don't use symbolic icons in the Nemo or GtkFileChooser sidebars
+  * quiet some warnings about gtkalpha
+  * Add some basic theming for Nemo disk full indicators
+  * Ensure we get a colored focus border on primary-toolbar/header-bar entries in the darker variation
+  * Redo theming for gnome terminal
+  * Recolor treeview headers to match the color used by cinnamon-settings headers. Also clean up the weird multi-color backgrounds in gtk2 treeviews
+  * Add images for .wide pane separator handles
+  * Make the titlebar assets match better to the metacity assets
+  * info-bars: Use a red color for the warning info bar. This gives us back the red banner when nemo is open as root
+  * Remove the strange white frame from around menus in the dark version of the gtk2 theme
+
+  [ Clement Lefebvre ]
+  * Generate theme during build
+  * Add credit to Arc and its author in the README file
+  * Fixed broken metacity themes in MATE
+  * Metacity-2 (Marco): Changed colors to neutral greys, use GTK selected shades for close button
+  * Metacity: Removed support for version 1, only ship one light and one dark theme, make them use neutral colors
+  * Metacity: Hardcode non-deviation colors (all but the close button, fixes Cinnamon selection), add thumbnails
+  * Metacity: Fix unfocused dark color
+  * Removed blue tint and lighten GTK3 sidebars
+  * Contrast: Darkened theme slightly BG (#f5f5f5 -> #f0f0f0) and top color (#e8e8e8 -> #d9d9d9)
+  * Updated metacity thumbnails, added gtk thumbnails
+  * Apply darkening to png assets
+  * Added missing GTK thumbnail to Mint-Y-Darker
+  * GTK2: Applied GTK3 changes to file-browser sidebars (caja and thunar), added missing support for terminals (fixes mate-terminal colors)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 22 Apr 2016 15:36:14 +0100
+
+mint-y-theme (1.0.0) sarah; urgency=low
+
+  * Initial version
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun,  20 Mar 2016 08:17:00 +0000

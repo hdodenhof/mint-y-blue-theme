@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+%:
+	dh ${@}
+
+override_dh_auto_build:
+	# Build themes
+	cd $(CURDIR)/src/ && ./build-themes.py
+	# Fix file permissions, just in case
+	find usr -type f -exec chmod 0644 '{}' \;
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz -z9
