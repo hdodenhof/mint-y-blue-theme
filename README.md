@@ -1,3 +1,8 @@
+Mint-Y-Blue
+===========
+
+This is a blue version of the [Mint-Y theme](https://github.com/linuxmint/mint-y-theme) with some minor tweaks to the build scripts and the theme itself.
+
 Credits
 =======
 
