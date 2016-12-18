@@ -258,6 +258,72 @@ StScrollBar {
 //
 // Popvers/Menus
 //
+.menu {
+  color: $fg_color;
+  border: 1px solid $borders_color;
+  border-radius: 3px;
+	background-color: transparentize($bg_color, 0.01);
+
+  &.top {
+    border-radius: 0 0 3px 3px;
+  }
+
+  &.bottom {
+    border-radius: 3px 3px 0 0;
+  }
+
+  &.left {
+    border-radius: 0 3px 3px 0;
+  }
+
+  &.right {
+    border-radius: 3px 0 0 3px;
+  }
+
+  &-arrow { icon-size: 16px; }
+
+  .popup-sub-menu {
+    background-color: $base_color;
+    box-shadow: none;
+
+    .popup-menu-item:ltr { padding-right: 1.75em; }
+    .popup-menu-item:rtl { padding-left: 1.75em; }
+
+    StScrollBar {
+      padding: 4px;
+      StBin#trough, StBin#vhandle { border-width: 0; }
+    }
+  }
+
+  .popup-menu-content { padding: 1em 0em 1em 0em; }
+  .popup-menu-item {
+    padding: .4em 1.75em;
+    spacing: 1em;
+    border: 1px solid transparent;
+    border-left-width: 0;
+    border-right-width: 0;
+
+    &:active {
+      color: $fg_color;
+      border-color: transparentize($fg_color, 0.89);
+      background-color: transparentize($fg_color, 0.92);
+    }
+    &:insensitive {
+      color: transparentize($fg_color, 0.5);
+      background: none;
+    }
+  }
+
+  .popup-inactive-menu-item { //all icons and other graphical elements
+    color: $fg_color;
+
+    &:insensitive { color: $insensitive_fg_color; }
+  }
+
+  &-icon { icon-size: 16px; }
+}
+
+/* This is for popup menus in Cinnamon versions < 3.2 */
 .popup-menu {
   color: white;
   color: $fg_color;
@@ -350,7 +416,10 @@ StScrollBar {
 //
 #panel {
   font-weight: bold;
+  /* sets the height of horizontal panels */
   height: 27px;
+  /* sets the width of vertical panels */
+  width: 32px;
 
   &Left {
     spacing: 4px;
@@ -362,6 +431,11 @@ StScrollBar {
     }
     &:ltr { padding-right: 4px; }
     &:rtl { padding-left: 4px; }
+    &.vertical {
+      padding: 0px;
+      &:ltr { padding-right: 0px; }
+      &:rtl { padding-left: 0px; }
+    }
   }
 
   &Right {
@@ -373,6 +447,11 @@ StScrollBar {
     }
     &:ltr { padding-left: 4px; spacing: 0px; }
     &:rtl { padding-right: 4px; spacing: 0px; }
+    &.vertical {
+      padding: 0px;
+      &:ltr { padding-right: 0px; }
+      &:rtl { padding-left: 0px; }
+    }
   }
 
   &Center {
@@ -393,14 +472,80 @@ StScrollBar {
 
 .panel {
 
-  &-top, &-bottom {
+  &Left {
+    spacing: 4px;
+
+    &:dnd {
+      background-gradient-direction: vertical;
+      background-gradient-start: rgba(255,0,0,0.05);
+      background-gradient-end: rgba(255,0,0,0.2);
+    }
+    &:ltr { padding-right: 4px; }
+    &:rtl { padding-left: 4px; }
+
+    &.vertical {
+      padding: 0px;
+      &:ltr { padding-right: 0px; }
+      &:rtl { padding-left: 0px; }
+    }
+  }
+
+  &Right {
+
+    &:dnd {
+      background-gradient-direction: vertical;
+      background-gradient-start: rgba(0,0,255,0.05);
+      background-gradient-end: rgba(0,0,255,0.2);
+    }
+    &:ltr { padding-left: 4px; spacing: 0px; }
+    &:rtl { padding-right: 4px; spacing: 0px; }
+
+    &.vertical {
+      padding: 0px;
+      &:ltr { padding-left: 0px; spacing: 0px; }
+      &:rtl { padding-right: 0px; spacing: 0px; }
+    }
+  }
+
+  &Center {
+    spacing: 4px;
+
+    &.vertical {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    &:dnd {
+      background-gradient-direction: vertical;
+      background-gradient-start: rgba(0,255,0,0.05);
+      background-gradient-end: rgba(0,255,0,0.2);
+    }
+  }
+
+
+  &-top, &-bottom, &-left, &-right {
     color: $selected_fg_color;
+    border: none;
+    background-color: transparentize($panel_bg, 0.01);
     font-size: 1em;
     padding: 0px;
   }
 
-  &-top { border-image: url('common-assets/panel/panel-top.svg') 1 1 1 1; }
-  &-bottom { border-image: url('common-assets/panel/panel-bottom.svg') 1 1 1 1; }
+  &-top {
+    box-shadow: 0 1px darken($panel_bg, 6%);
+  }
+
+  &-bottom {
+    box-shadow: 0 -1px darken($panel_bg, 6%);
+  }
+
+  &-left {
+    box-shadow: 1px 0 darken($panel_bg, 6%);
+  }
+
+  &-right {
+    box-shadow: -1px 0 darken($panel_bg, 6%);
+  }
 
   &-dummy {
     background-color: transparentize($error_color, 0.5);
@@ -436,7 +581,7 @@ StScrollBar {
 }
 
 //
-// Overview 
+// Overview
 //
 #overview { spacing: 12px; }
 
@@ -606,7 +751,7 @@ StScrollBar {
 
 
 //
-// Calendar 
+// Calendar
 //
 .calendar {
   padding: .4em 1.75em;
@@ -751,7 +896,7 @@ StScrollBar {
 
   &.multi-line-notification {
     padding-bottom: 13px;
-    color: $osd_fg_color;
+    color: $fg_color;
   }
 
   &-scrollview {
@@ -1054,7 +1199,7 @@ StScrollBar {
   &:active, &:checked { @include button(osd-active); }
 
   &:grayed { @include button(osd-insensitive); }
-}                             
+}
 
 .keyboard-subkeys { //long press on a key popup
   color: $osd_fg_color;
@@ -1069,7 +1214,7 @@ StScrollBar {
 }
 
 //
-// Cinnamon Specific Section 
+// Cinnamon Specific Section
 //
 
 //
@@ -1088,7 +1233,9 @@ StScrollBar {
     padding: 10px;
     border: 1px solid rgba(0,0,0,0);
 
-    &:hover { @extend %button:hover; }
+    &:hover {
+      background-color: if($variant =='light', darken($bg_color, 2%), lighten($button_bg, 5%));
+    }
   }
 
   &-places {
@@ -1235,6 +1382,18 @@ StScrollBar {
     spacing: 6px;
     padding-left: 10px;
     padding-top: 1px;
+
+    &.vertical {
+      spacing: 2px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    &:highlight {
+      background-color: transparentize($error_color, 0.5);
+    }
   }
 
   &-item-label {
@@ -1246,18 +1405,45 @@ StScrollBar {
   &-item-box {
     font-weight: bold;
     background-image: none;
+    padding-top: 0;
     padding-left: 8px;
     padding-right: 8px;
     transition-duration: 100;
     color: transparentize($selected_fg_color, 0.4);
 
-    &:hover {color: $selected_fg_color;}
+    &.top,
+    &.bottom {
+      border-bottom-width: 2px;
+
+      & StLabel { padding-left: 2px; }
+    }
+
+    &.right {
+      padding-left: 0px;
+      padding-right: 0px;
+      border-right-width: 2px;
+
+      & StBin { padding-right: 0; }
+    }
+
+    &.left {
+      padding-left: 0px;
+      padding-right: 0px;
+      border-left-width: 2px;
+
+      & StBin { padding-left: 1px; }
+    }
+
+    &:hover {
+      color: $selected_fg_color;
+      background-color: transparentize($selected_fg_color, 0.9);
+    }
 
     &:active,
     &:checked,
     &:focus {
       color: $selected_fg_color;
-      border-image: url("common-assets/panel/window-list-active-bottom.svg") 3 3 1 3;
+      border-color: $selected_bg_color;
     }
   }
 
@@ -1406,24 +1592,51 @@ StScrollBar {
 .workspace-switcher {
   padding-left: 3px;
   padding-right: 3px;
+
+  .panel-left &,
+  .panel-right & {
+    padding: 0;
+  }
 }
 
 .workspace-button {
+  border: 1px solid transparentize(black, 0.6);
+  background-color: transparentize(black, 0.8);
   width: 20px;
-  height: 10px;
-  color: $selected_fg_color;
+  height: 14px;
+  color: transparentize($selected_fg_color, 0.55);
   padding: 3px;
   padding-top: 4px;
-  transition-duration: 300;
+  transition-duration: 200;
 
-  &:outlined, &:outlined:hover { color: $selected_bg_color; }
-  &:hover { color: transparentize($selected_bg_color, 0.5) }
+  &.vertical {
+    height: 14px;
+    width: 24px;
+    padding: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  &:outlined {
+    background-color: $selected_bg_color;
+    color: $selected_fg_color;
+
+    &:hover {
+      background-color: transparentize($selected_bg_color, 0.3);
+      color: $selected_fg_color;
+    }
+  }
+
+  &:hover {
+    background-color: transparentize($fg_color, 0.8);
+    color: $selected_fg_color;
+  }
 }
 
 /* Controls the style when using the "Visual representation" option */
 .workspace-graph {
   padding: 3px;
-  spacing: 3px;
+  spacing: 6px;
 }
 
 .workspace-graph .workspace {
@@ -1452,18 +1665,30 @@ StScrollBar {
 //
 // Panel Launchers Applet (panelLaunchers.js)
 //
-#panel-launchers-box {
+.panel-launchers {
   padding-left: 7px;
-}
+  spacing: 2px;
 
-.panel-launcher {
-  margin: 1px;
-  padding: 1px;
-  transition-duration: 200;
+  & .launcher {
+    padding-left: 2px;
+    padding-right: 2px;
+    // border-bottom-width: 1px;
+    transition-duration: 200;
 
-  &:hover {
-    border: 0px solid $selected_bg_color;
-    border-bottom-width: 1px;
+    &:hover { background-color: $selected_bg_color; }
+  }
+
+  &.vertical {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left:0px;
+    padding-right: 0px;
+    spacing: 1px;
+
+    & .launcher {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
   }
 }
 
@@ -1477,7 +1702,7 @@ StScrollBar {
 }
 
 //
-// Applets (applet.js) 
+// Applets (applet.js)
 //
 .applet {
   &-separator { padding: 1px 4px; }
@@ -1494,9 +1719,27 @@ StScrollBar {
     text-shadow: none;
     transition-duration: 100;
 
-    &:hover {
+    & StLabel { padding-top: 2px; }
+
+    &.vertical {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+
+      & StLabel { padding-top: 0; }
+    }
+
+    &:hover,
+    &:checked {
       color: $selected_fg_color;
       background-color: $selected_bg_color;
+    }
+
+    &:highlight {
+      background-image: none;
+      border-image: none;
+      background-color: transparentize($error_color, 0.5);
     }
   }
 
@@ -1504,7 +1747,10 @@ StScrollBar {
     font-weight: bold;
     color: transparentize($selected_fg_color, 0.4);
 
-    &:hover, .applet-box:hover > & {
+    &:hover,
+    &:checked,
+    .applet-box:hover > &,
+    .applet-box:checked > & {
       color: $selected_fg_color;
       text-shadow: none;
     }
@@ -1514,7 +1760,10 @@ StScrollBar {
     color: $selected_fg_color;
     icon-size: 22px;
 
-    &:hover, .applet-box:hover > & {
+    &:hover,
+    &:checked,
+    .applet-box:hover > &,
+    .applet-box:checked > & {
       color: $selected_fg_color;
       text-shadow: none;
     }
@@ -1541,10 +1790,14 @@ StScrollBar {
 }
 
 //
-// Desklets (desklet.js) 
+// Desklets (desklet.js)
 //
 .desklet {
   color: $fg_color;
+
+  &:highlight {
+    background-color: transparentize($error_color, 0.5);
+  }
 
   &-with-borders {
     border: 1px solid $borders_color;
@@ -1553,7 +1806,12 @@ StScrollBar {
     color: $fg_color;
     padding: 12px;
     padding-bottom: 16px;
+
+    &:highlight {
+      background-color: transparentize($error_color, 0.5);
+    }
   }
+
   &-with-borders-and-header {
     border: 1px solid $borders_color;
     border-top-width: 0;
@@ -1565,7 +1823,12 @@ StScrollBar {
     border-radius-topright: 0;
     padding: 12px;
     padding-bottom: 17px;
+
+    &:highlight {
+      background-color: transparentize($error_color, 0.5);
+    }
   }
+
   &-header {
     border: 1px solid $borders_color;
     border-radius: 5px 5px 0 0;
@@ -1575,7 +1838,8 @@ StScrollBar {
     padding: 12px;
     padding-bottom: 6px;
   }
-  &-drag-placeholder { 
+
+  &-drag-placeholder {
     border: 2px solid $selected_bg_color;
     background-color: transparentize($selected_bg_color, 0.7);
   }
