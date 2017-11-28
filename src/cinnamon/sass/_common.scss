@@ -1456,6 +1456,10 @@ StScrollBar {
     }
   }
 
+  & .progress {
+    background-color: transparentize($selected_bg_color, 0.2);
+  }
+
   &-item-demands-attention {
     background-gradient-direction: vertical;
     background-gradient-start: $destructive_color;
