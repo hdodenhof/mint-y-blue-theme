@@ -429,7 +429,7 @@ StScrollBar {
 #panel {
   font-weight: bold;
   /* sets the height of horizontal panels */
-  height: 27px;
+  height: 40px;
   /* sets the width of vertical panels */
   width: 32px;
 
@@ -588,8 +588,8 @@ StScrollBar {
 }
 
 .system-status-icon {
-  icon-size: 16px;
-  padding: 0 1px;
+  icon-size: 24px;
+  padding: 0 2px;
 
   &.warning { color: $warning_color; }
   &.error { color: $error_color; }
@@ -1326,7 +1326,7 @@ StScrollBar {
 
 #menu-search-entry {
   width: 250px;
-  height: 15px;
+  height: 23px;
   font-weight: normal;
   caret-color: $fg_color;
 
@@ -1772,7 +1772,7 @@ StScrollBar {
 
   &-icon {
     color: $selected_fg_color;
-    icon-size: 22px;
+    icon-size: 33px;
 
     &:hover,
     &:checked,
