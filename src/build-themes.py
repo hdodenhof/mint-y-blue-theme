@@ -11,7 +11,7 @@ DEST = '../usr/share/themes'
 curdir = os.getcwd()
 
 print("Updating Gtk3 assets")
-os.chdir("gtk-3.0/3.18/")
+os.chdir("gtk-3.0/")
 os.system("./parse-sass.sh")
 os.system("./render-assets.sh")
 print("Gtk3 assets updated")
@@ -34,19 +34,13 @@ print("Cinnamon assets updated")
 os.chdir(curdir)
 
 if __name__ == '__main__':
-    if not os.path.isdir(DEST):
-        os.makedirs(DEST)
-
     print("Building themes")
     for variation in VARIATIONS:
         dest_folder = os.path.join(DEST, variation)
-
-        if not os.path.isdir(dest_folder):
-            os.mkdir(dest_folder)
-
+        os.system("mkdir -p %s" % dest_folder)
         if variation == "Mint-Y-Blue":
             print("    Building Mint-Y-Blue")
-            os.system("cp index.theme %s" % dest_folder)
+            os.system("cp index.theme %s/" % dest_folder)
             # Gtk2
             version_folder = os.path.join(dest_folder, "gtk-2.0")
             os.system("mkdir -p %s" % version_folder)
@@ -57,9 +51,9 @@ if __name__ == '__main__':
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
             os.system("mkdir -p %s" % version_folder)
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk.css %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/thumbnail.png %s" % version_folder)
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk.css %s" % version_folder)
+            os.system("cp gtk-3.0/thumbnail.png %s" % version_folder)
             # Metacity
             os.system("cp -R metacity-1 %s" % dest_folder)
             os.system("rm %s/*-dark*" % (os.path.join(dest_folder, "metacity-1")))
@@ -84,10 +78,10 @@ if __name__ == '__main__':
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
             os.system("mkdir -p %s" % version_folder)
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk-darker.css %s" % os.path.join(version_folder, "gtk.css"))
-            os.system("cp gtk-3.0/3.18/gtk-dark.css %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/thumbnail.png %s" % version_folder)
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk-darker.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-3.0/gtk-dark.css %s" % version_folder)
+            os.system("cp gtk-3.0/thumbnail.png %s" % version_folder)
 
         elif variation == "Mint-Y-Blue-Dark":
             print("    Building Mint-Y-Blue-Dark")
@@ -104,9 +98,9 @@ if __name__ == '__main__':
             # Gtk3
             version_folder = os.path.join(dest_folder, "gtk-3.0")
             os.system("mkdir -p %s" % version_folder)
-            os.system("cp -R gtk-3.0/3.18/assets %s" % version_folder)
-            os.system("cp gtk-3.0/3.18/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
-            os.system("cp gtk-3.0/3.18/thumbnail-dark.png %s" % os.path.join(version_folder, "thumbnail.png"))
+            os.system("cp -R gtk-3.0/assets %s" % version_folder)
+            os.system("cp gtk-3.0/gtk-dark.css %s" % os.path.join(version_folder, "gtk.css"))
+            os.system("cp gtk-3.0/thumbnail-dark.png %s" % os.path.join(version_folder, "thumbnail.png"))
             # Metacity
             os.system("cp -R metacity-1 %s" % dest_folder)
             os.system("mv %s %s" % (os.path.join(dest_folder, "metacity-1", "metacity-theme-2-dark.xml"), os.path.join(dest_folder, "metacity-1", "metacity-theme-2.xml")))

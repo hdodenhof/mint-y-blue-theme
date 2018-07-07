@@ -1,12 +1,12 @@
-src/gtk-3.0/3.18/.sass-cache
+src/gtk-3.0/.sass-cache
 src/cinnamon/.sass-cache
 
 usr/
 
 src/gtk-2.0/assets
 src/gtk-2.0/assets-dark
-src/gtk-3.0/3.18/assets
+src/gtk-3.0/assets
 
 src/cinnamon/*.css
-src/gtk-3.0/3.18/*.css
+src/gtk-3.0/*.css
 
